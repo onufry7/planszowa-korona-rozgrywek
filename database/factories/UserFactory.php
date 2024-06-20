@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserRole;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -35,6 +36,7 @@ class UserFactory extends Factory
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
+            'role' => $this->faker->optional(0.8, UserRole::Admin->value)->randomElement([UserRole::Gamer->value]),
             'profile_photo_path' => null,
             'current_team_id' => null,
         ];
@@ -53,7 +55,7 @@ class UserFactory extends Factory
     /**
      * Indicate that the user should have a personal team.
      */
-    public function withPersonalTeam(callable $callback = null): static
+    public function withPersonalTeam(?callable $callback = null): static
     {
         if (! Features::hasTeamFeatures()) {
             return $this->state([]);
