@@ -11,7 +11,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeIndex);
 
         $this->get($route)->assertStatus(302);
-        $this->actingAs($this->user)->get($route)->assertStatus(403);
+        $this->actingAs($this->gamer)->get($route)->assertStatus(403);
         $this->actingAs($this->admin)->get($route)->assertStatus(200);
     }
 
@@ -21,7 +21,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeShow, $accessToken);
 
         $this->get($route)->assertStatus(302);
-        $this->actingAs($this->user)->get($route)->assertStatus(403);
+        $this->actingAs($this->gamer)->get($route)->assertStatus(403);
         $this->actingAs($this->admin)->get($route)->assertStatus(200);
     }
 
@@ -30,7 +30,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeCreate);
 
         $this->get($route)->assertStatus(302);
-        $this->actingAs($this->user)->get($route)->assertStatus(403);
+        $this->actingAs($this->gamer)->get($route)->assertStatus(403);
         $this->actingAs($this->admin)->get($route)->assertStatus(200);
     }
 
@@ -40,7 +40,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeStore);
 
         $this->post($route, $accessToken)->assertStatus(302);
-        $this->actingAs($this->user)->post($route, $accessToken)->assertStatus(403);
+        $this->actingAs($this->gamer)->post($route, $accessToken)->assertStatus(403);
         $this->actingAs($this->admin)->post($route, $accessToken)->assertStatus(302);
     }
 
@@ -50,7 +50,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeEdit, $accessToken);
 
         $this->get($route)->assertStatus(302);
-        $this->actingAs($this->user)->get($route)->assertStatus(403);
+        $this->actingAs($this->gamer)->get($route)->assertStatus(403);
         $this->actingAs($this->admin)->get($route)->assertStatus(200);
     }
 
@@ -60,7 +60,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeUpdate, $accessToken);
 
         $this->put($route)->assertStatus(302);
-        $this->actingAs($this->user)->put($route)->assertStatus(403);
+        $this->actingAs($this->gamer)->put($route)->assertStatus(403);
         $this->actingAs($this->admin)->put($route)->assertStatus(302);
     }
 
@@ -70,7 +70,7 @@ class AccessTokenRoutsTest extends AccessTokenTestCase
         $route = route($this->routeDestroy, $accessToken);
 
         $this->delete($route)->assertStatus(302);
-        $this->actingAs($this->user)->delete($route)->assertStatus(403);
+        $this->actingAs($this->gamer)->delete($route)->assertStatus(403);
         $this->actingAs($this->admin)->delete($route)->assertStatus(302);
     }
 }

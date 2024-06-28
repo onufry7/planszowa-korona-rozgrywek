@@ -10,12 +10,13 @@ Route::get('/', fn () => view('welcome'))->name('welcome');
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 
-    Route::middleware(['can:isAdmin'])->group(function () {
+    Route::middleware(['can:isAdmin'])->prefix('admin')->group(function () {
 
-        Route::view('admin', 'admin.dashboard')->name('admin.dashboard');
+        Route::view('dashboard', 'admin.dashboard')->name('admin.dashboard');
 
-        Route::resource('admin/access-token', AccessTokenController::class, [
+        Route::resource('access-token', AccessTokenController::class, [
             'parameters' => ['access-token' => 'accessToken'],
+            'as' => 'admin',
         ]);
 
     });

@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-admin>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Access tokens') }}
-        </h2>
+        {{ __('Access tokens') }}
     </x-slot>
 
     @if ($accessTokens->isEmpty())
@@ -56,6 +54,6 @@
         </div>
     @endif
 
-</x-app-layout>
+</x-admin>
 
 

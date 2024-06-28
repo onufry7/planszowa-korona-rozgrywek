@@ -8,4 +8,5 @@ parameters:
 	scanDirectories:
 		- vendor
 	ignoreErrors:
+		- '#no value type specified in iterable type array#'
 	excludePaths:

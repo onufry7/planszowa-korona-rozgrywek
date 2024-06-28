@@ -6,9 +6,8 @@ use App\Http\Requests\AccessTokenRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Tests\TestCase;
 
-class AccessTokenRequestTest extends TestCase
+class AccessTokenRequestTest extends AccessTokenTestCase
 {
     #[DataProvider('validProvider')]
     public function test_field_validation_passed(array $data): void
