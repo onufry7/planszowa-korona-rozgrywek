@@ -52,12 +52,13 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ],
-        "phpstan": [
+        "check-files": [
+            "./vendor/bin/pint",
             "./vendor/bin/phpstan analyse"
         ]
     },
     "scripts-descriptions": {
-        "phpstan": "Run PHPStan static analysis against your application."
+        "check-files": "Run Pint and PHPStan static analysis against your application."
     },
     "extra": {
         "laravel": {
