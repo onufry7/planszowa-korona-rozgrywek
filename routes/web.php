@@ -8,15 +8,17 @@ use Laravel\Fortify\RoutePath;
 Route::get('/', fn () => view('welcome'))->name('welcome');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+
+    Route::get('/dashboard', fn () => view('user.dashboard'))->name('user-dashboard');
+
+    Route::middleware(['can:isAdminOrJudge'])->prefix('admin')->group(function () {
+        Route::view('dashboard', 'admin.dashboard')->name('admin-dashboard');
+    });
 
     Route::middleware(['can:isAdmin'])->prefix('admin')->group(function () {
 
-        Route::view('dashboard', 'admin.dashboard')->name('admin.dashboard');
-
         Route::resource('access-token', AccessTokenController::class, [
             'parameters' => ['access-token' => 'accessToken'],
-            'as' => 'admin',
         ]);
 
     });

@@ -25,6 +25,10 @@ class UserRoleServiceProvider extends ServiceProvider
         $this->definedUserRoleGate('isAdmin', UserRole::Admin->value);
         $this->definedUserRoleGate('isJudge', UserRole::Judge->value);
         $this->definedUserRoleGate('isGamer', UserRole::Gamer->value);
+
+        Gate::define('isAdminOrJudge', fn (User $user) => (
+            in_array($user->role, [UserRole::Admin->value, UserRole::Judge->value])
+        ));
     }
 
     private function definedUserRoleGate(string $name, string $role): void

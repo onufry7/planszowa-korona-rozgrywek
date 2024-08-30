@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 
 class AccessTokenTest extends AccessTokenTestCase
 {
-    public function test_access_token_check_is_active_method(): void
+    public function test_access_token_check_active_method(): void
     {
         $token1 = AccessToken::factory(1)->create([
             'expires_at' => Carbon::yesterday()->format('Y-m-d H:i'),
@@ -32,12 +32,20 @@ class AccessTokenTest extends AccessTokenTestCase
         $this->assertFalse($token4->isActive());
     }
 
-    public function test_access_token_check_is_expired_method(): void
+    public function test_access_token_check_expired_method(): void
     {
         $token1 = AccessToken::factory(1)->create(['expires_at' => Carbon::yesterday()->format('Y-m-d H:i')])->first();
         $token2 = AccessToken::factory(1)->create(['expires_at' => Carbon::tomorrow()->format('Y-m-d H:i')])->first();
 
         $this->assertTrue($token1->isExpired());
         $this->assertFalse($token2->isExpired());
+    }
+
+    public function test_access_token_mark_as_used_method(): void
+    {
+        $token = AccessToken::factory(1)->create(['is_used' => false])->first();
+        $token->markAsUsed();
+
+        $this->assertTrue($token->is_used);
     }
 }

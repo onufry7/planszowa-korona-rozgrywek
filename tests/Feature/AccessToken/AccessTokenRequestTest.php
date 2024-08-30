@@ -33,20 +33,20 @@ class AccessTokenRequestTest extends AccessTokenTestCase
     public static function validProvider(): array
     {
         return [
-            'Only required fields' => [[
+            'only required fields is used' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'email' => 'test@test.com',
             ]],
 
-            'All correct fields' => [[
+            'all fields is correct' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'is_used' => false,
                 'email' => 'test@test.com',
             ]],
 
-            'is_used field is true' => [[
+            'is used field is true' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'is_used' => true,
@@ -58,50 +58,50 @@ class AccessTokenRequestTest extends AccessTokenTestCase
     public static function invalidProvider(): array
     {
         return [
-            'Empty url' => [[
+            'url field is empty' => [[
                 'url' => '',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'email' => 'test@test.com',
             ]],
 
-            'Empty expires at' => [[
+            'expires at is empty' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => '',
                 'email' => 'test@test.com',
             ]],
 
-            'Incorrect url' => [[
+            'url field is incorrect' => [[
                 'url' => 'test url',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'email' => 'test@test.com',
             ]],
 
-            'Incorrect format data for expires at' => [[
+            'format data for expires at field is incorrect' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('d-m-Y H:i'),
                 'email' => 'test@test.com',
             ]],
 
-            'Past data for expires at' => [[
+            'past data for expires at field' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::yesterday()->format('Y-m-d H:i'),
                 'email' => 'test@test.com',
             ]],
 
-            'Incorrect is used value' => [[
+            'is used field have incorrect value' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'email' => 'test@test.com',
                 'is_used' => 'test',
             ]],
 
-            'Incorrect email' => [[
+            'email field is incorrect' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'email' => 'incorrect email',
             ]],
 
-            'Empty email' => [[
+            'email field is empty' => [[
                 'url' => 'https://youtu.be/h5ke4Ka4_mg',
                 'expires_at' => Carbon::tomorrow()->format('Y-m-d H:i'),
                 'email' => '',

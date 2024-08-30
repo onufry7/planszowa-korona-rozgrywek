@@ -1,16 +1,30 @@
-<x-admin>
+<x-app-layout>
     <x-slot name="header">
-        {{ __('Admin Dashboard') }}
+        {{ __('Admin dashboard') }}
     </x-slot>
 
-    <x-application-logo class="block h-12 w-auto" />
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="px-4 py-5 sm:p-6 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <nav class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex flex-row flex-wrap gap-4 justify-center">
+                    <x-nav-link href="{{ route('admin-dashboard') }}" :active="request()->routeIs('admin-dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('access-token.index') }}" :active="request()->routeIs('access-token.*')">
+                        {{ __('Access tokens') }}
+                    </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('season.*')">
+                        {{ __('Seasons') }}
+                    </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('gamer.*')">
+                        {{ __('Gamers') }}
+                    </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('game.*')">
+                        {{ __('Games') }}
+                    </x-nav-link>
+                </div>
+            </nav>
+        </div>
+    </div>
 
-    <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
-        Welcome to your Jetstream application!
-    </h1>
-
-    <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-        ADMIN DASHBOARD
-    </p>
-
-</x-admin>
+</x-app-layout>

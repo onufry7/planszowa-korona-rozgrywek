@@ -9,26 +9,25 @@ class AccessTokenTestCase extends AuthenticatedTestCase
 {
     use RefreshDatabase;
 
-    protected string $routeIndex = 'admin.access-token.index';
+    protected string $routeIndex = 'access-token.index';
 
-    protected string $routeCreate = 'admin.access-token.create';
+    protected string $routeCreate = 'access-token.create';
 
-    protected string $routeStore = 'admin.access-token.store';
+    protected string $routeStore = 'access-token.store';
 
-    protected string $routeShow = 'admin.access-token.show';
+    protected string $routeShow = 'access-token.show';
 
-    protected string $routeEdit = 'admin.access-token.edit';
+    protected string $routeEdit = 'access-token.edit';
 
-    protected string $routeUpdate = 'admin.access-token.update';
+    protected string $routeUpdate = 'access-token.update';
 
-    protected string $routeDestroy = 'admin.access-token.destroy';
+    protected string $routeDestroy = 'access-token.destroy';
 
-
-    public function setUp(): Void
+    public function setUp(): void
     {
         parent::setUp();
 
-        if (!env('REGISTER_TOKEN', false)) {
+        if (! env('REGISTER_TOKEN', false)) {
             $this->markTestSkipped('Register token system not enabled.');
         }
     }

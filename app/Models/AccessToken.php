@@ -28,7 +28,6 @@ class AccessToken extends Model
     public function isActive(): bool
     {
         return ! $this->isExpired() && ! $this->is_used;
-
     }
 
     public function markAsUsed(): void

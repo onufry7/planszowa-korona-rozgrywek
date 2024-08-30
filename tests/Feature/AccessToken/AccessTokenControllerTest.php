@@ -13,7 +13,7 @@ class AccessTokenControllerTest extends AccessTokenTestCase
         $route = route($this->routeIndex);
 
         $this->actingAs($this->admin)->get($route)->assertOk()
-            ->assertViewIs('access-token.index')
+            ->assertViewIs($this->routeIndex)
             ->assertSeeText(__('No access tokens'));
     }
 
@@ -23,7 +23,7 @@ class AccessTokenControllerTest extends AccessTokenTestCase
         $route = route($this->routeIndex);
 
         $this->actingAs($this->admin)->get($route)->assertOk()
-            ->assertViewIs('access-token.index')
+            ->assertViewIs($this->routeIndex)
             ->assertSeeText($accessToken->token)
             ->assertDontSeeText(__('No access tokens'));
     }
@@ -34,7 +34,7 @@ class AccessTokenControllerTest extends AccessTokenTestCase
         $route = route($this->routeShow, $accessToken);
 
         $this->actingAs($this->admin)->get($route)->assertOk()
-            ->assertViewIs('access-token.show');
+            ->assertViewIs($this->routeShow);
     }
 
     public function test_access_token_create_method_render_correct_view(): void
@@ -42,7 +42,7 @@ class AccessTokenControllerTest extends AccessTokenTestCase
         $route = route($this->routeCreate);
 
         $this->actingAs($this->admin)->get($route)->assertOk()
-            ->assertViewIs('access-token.create');
+            ->assertViewIs($this->routeCreate);
     }
 
     public function test_access_token_edit_method_render_correct_view(): void
@@ -51,7 +51,7 @@ class AccessTokenControllerTest extends AccessTokenTestCase
         $route = route($this->routeEdit, $accessToken);
 
         $this->actingAs($this->admin)->get($route)->assertOk()
-            ->assertViewIs('access-token.edit');
+            ->assertViewIs($this->routeEdit);
     }
 
     public function test_access_token_store_method_creates_a_record(): void

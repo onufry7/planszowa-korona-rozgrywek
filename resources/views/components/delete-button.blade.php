@@ -1,4 +1,4 @@
-@props(['action', 'type' => 'buttons.delete', 'content', 'id'])
+@props(['action', 'type' => 'danger-button', 'content', 'id'])
 
 <div x-data="{ 'showModal': false }" @keydown.escape="showModal = false" {{ $attributes->merge(['class']) }}>
     <form id="{{ $id ?? 'delete' }}" action="{{ $action }}" method="POST">
